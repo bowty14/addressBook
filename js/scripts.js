@@ -64,13 +64,8 @@ Contact.prototype.fullName = function () {
   return this.firstName + " " + this.lastName;
 }
 
-// Address.prototype.fullAddress = function(){
-//   return this.type + " " + this.street + " " + this.city + " " + this.state + " " + this.zip;
-// }
-
 // User Interface Logic ---------
 var addressBook = new AddressBook();
-// var physicalAddress = new Address();
 
 function displayContactDetails(addressBookToDisplay) {
   var contactsList = $("ul#contacts");
@@ -83,18 +78,16 @@ function displayContactDetails(addressBookToDisplay) {
 
 function showContact(contactId) {
   var contact = addressBook.findContact(contactId);
-  // var address = 
   $("#show-contact").show();
   $(".first-name").html(contact.firstName);
   $(".last-name").html(contact.lastName);
   $(".phone-number").html(contact.phoneNumber);
   $(".email-address").html(contact.emailAddress);
-  //something like this:
-  $(".full-address").html(contact.addresses[0].type + " " + contact.addresses[0].street + " " + contact.addresses[0].city + " " + contact.addresses[0].state + " " + contact.addresses[0].zip);
-  // $(".full-address").html(contact.addresses[0].street);
-  // $(".full-address").html(contact.addresses[2].city);
-  // $(".full-address").html(contact.addresses[3].state);
-  // $(".full-address").html(contact.addresses[4].zip);
+  $(".address-type").html(contact.addresses[0].type);
+  $(".address-street").html(contact.addresses[0].street);
+  $(".address-city").html(contact.addresses[0].city);
+  $(".address-state").html(contact.addresses[0].state);
+  $(".address-zip").html(contact.addresses[0].zip);
   var buttons = $("#buttons");
   buttons.empty();
   buttons.append("<button class='deleteButton' id=" + contact.id + ">Delete</button>");
